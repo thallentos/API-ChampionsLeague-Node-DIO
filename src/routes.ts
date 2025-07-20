@@ -5,6 +5,7 @@ const router = Router();
 
 router.get("/players", PlayersController.getPlayer);
 router.post("/players", PlayersController.postPlayer);
+router.delete("/players/:id", PlayersController.deletePlayer);
 
 router.get("/players/:id", PlayersController.getPlayerById);
 
