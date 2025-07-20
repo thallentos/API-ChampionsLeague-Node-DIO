@@ -1,3 +1,14 @@
+import { noContent, ok } from "../utils/http-helper";
+
 export const getPlayerService = async () => {
-    return { player: "Antony, o GOAT" };
+  const data = { player: "Antony, o GOAT" };
+  let response = null
+
+  if (data) {
+    response = await ok(data);
+  } else {
+    response = await noContent();
+  }
+  
+  return response;
 };
