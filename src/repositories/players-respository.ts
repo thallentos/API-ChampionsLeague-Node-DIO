@@ -1,4 +1,5 @@
 import { PlayerModel } from "../models/player-model";
+import { StatisticsModel } from "../models/statitics-model";
 
 const database: PlayerModel[] = [
   {
@@ -133,5 +134,21 @@ export const deleteOnePlayer = async (id: number) => {
   const index = database.findIndex((player) => player.id === id);
   if (index !== -1) {
     database.splice(index, 1);
+    return true;
   }
+
+  return false;
+};
+
+export const findAndModifyPlayer = async (
+  id: number,
+  statistics: StatisticsModel
+): Promise<PlayerModel> => {
+  //find player
+  const playerindex = database.findIndex((player) => player.id === id);
+  if (playerindex !== -1) {
+    database[playerindex].statistics = statistics;
+  }
+
+  return database[playerindex];
 };
